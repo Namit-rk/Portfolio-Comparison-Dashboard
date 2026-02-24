@@ -1,0 +1,1 @@
+web: gunicorn scr.dash_app:server
