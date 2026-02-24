@@ -1,0 +1,104 @@
+# ------------------------------
+# Python
+# ------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.pyo
+
+# Bytecode
+*.pyc
+
+# ------------------------------
+# Virtual Environments
+# ------------------------------
+.venv/
+venv/
+env/
+ENV/
+
+# Poetry virtualenv cache (VERY IMPORTANT)
+C:/Users/*/AppData/Local/pypoetry/Cache/virtualenvs/
+.pypoetry/
+poetry.toml
+
+# ------------------------------
+# VSCode / IDE
+# ------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------------------
+# OS files
+# ------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ------------------------------
+# Logs
+# ------------------------------
+*.log
+logs/
+log/
+
+# ------------------------------
+# Data files (IMPORTANT)
+# ------------------------------
+data/raw/*
+data/interim/*
+data/processed/*
+!data/.gitkeep
+
+# Parquet / CSV / Pickle
+*.parquet
+*.csv
+*.pkl
+*.pickle
+*.feather
+*.h5
+
+# ------------------------------
+# Jupyter
+# ------------------------------
+.ipynb_checkpoints
+
+# ------------------------------
+# Build / distribution
+# ------------------------------
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ------------------------------
+# Cache
+# ------------------------------
+.cache/
+pytest_cache/
+.mypy_cache/
+.pytest_cache/
+
+# ------------------------------
+# Environment variables
+# ------------------------------
+.env
+.env.*
+
+# Experiments
+extensions/
+research/
+outputs/
+models/
+
+# pytest
+.pytest_cache/
+coverage.xml
+htmlcov/
+
+1.8
+.python-version
