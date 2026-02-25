@@ -101,3 +101,5 @@ htmlcov/
 
 1.8
 notebook.ipynb
+poetry.lock
+pyproject.toml
