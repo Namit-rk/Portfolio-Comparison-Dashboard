@@ -54,7 +54,7 @@ data/interim/*
 !data/.gitkeep
 
 # Parquet / CSV / Pickle
-*.parquet
+
 *.csv
 *.pkl
 *.pickle
