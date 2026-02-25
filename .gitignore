@@ -51,7 +51,6 @@ log/
 # ------------------------------
 data/raw/*
 data/interim/*
-data/processed/*
 !data/.gitkeep
 
 # Parquet / CSV / Pickle
