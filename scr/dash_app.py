@@ -8,8 +8,8 @@ from scr.config import STOCKS, START_DATE, END_DATE
 from scr.portfolio_making import load_returns, Portfolio, PortfoliosForTickers
 from scr.efficient_frontier import compute_frontier_data, plot_efficient_frontier
 
-from scr.bootstrap import ensure_dataset
-ensure_dataset()
+# from scr.bootstrap import ensure_dataset
+# ensure_dataset()
 # ---------------------------------------------------------------------------
 # App & theme — patch plotly_dark once so no per-figure calls are needed
 # ---------------------------------------------------------------------------
