@@ -1,13 +1,15 @@
 import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
+from pathlib import Path
 from scr.logger import setup_logger
 from scr.config import NUM_TRADING_DAYS,RISK_FREE_RATE,START_DATE,END_DATE
 from scr.optimization_methods import momentum,max_sharpe,min_variance,equal_weight,risk_parity
 
 logger = setup_logger()
 
-RETURNS_PATH = "data/processed/returns.parquet"
+BASE_DIR = Path(__file__).resolve().parents[1]
+RETURNS_PATH = BASE_DIR / "data" / "processed" / "returns.parquet"
 
 def load_returns() -> pd.DataFrame:
 	"""
