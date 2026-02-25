@@ -101,5 +101,4 @@ coverage.xml
 htmlcov/
 
 1.8
-.python-version
 notebook.ipynb
