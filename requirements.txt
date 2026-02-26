@@ -13,3 +13,4 @@ pyarrow==22.0.0
 
 tenacity==9.1.4
 requests==2.32.5
+pytest==9.0.2
