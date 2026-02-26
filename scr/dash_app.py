@@ -228,7 +228,7 @@ control_bar = dbc.Card(
 app.layout = dbc.Container(
                             [   
 
-                            html.H2("Quant Portfolio Research Dashboard", style={"textAlign": "center"}),
+                            html.H1("Quant Portfolio Research Dashboard", style={"textAlign": "center"}),
 
                             dcc.Markdown(""" 
                                         This dashboard compares multiple portfolio construction techniques 
