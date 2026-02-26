@@ -73,7 +73,7 @@ Portfolio-Comparison-Dashboard/
 ### 1) Clone the repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Namit-rk/Portfolio-Comparison-Dashboard.git
 cd Portfolio-Comparison-Dashboard
 ```
 
@@ -179,7 +179,7 @@ Typical deployment flow:
 
 ---
 
-## Future Improvements (Suggested)
+## Future Improvements 
 
 - Add rebalance frequency support for strategies.
 - Add transaction costs/slippage assumptions for backtests.
