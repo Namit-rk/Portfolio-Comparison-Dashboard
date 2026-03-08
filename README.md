@@ -14,6 +14,8 @@ This project:
 - Builds multiple portfolio strategies (equal weight, max Sharpe, minimum variance, risk parity, momentum, and optional user-defined portfolios).
 - Visualizes performance, risk, allocation, efficient frontier, Monte Carlo outcomes, and out-of-sample backtests in an interactive Dash app.
 
+**Live Demo:** https://portfolio-comparison-dashboard-2.onrender.com/
+
 ---
 
 ## Features
