@@ -34,7 +34,7 @@ This project:
   - Monthly return heatmaps.
   - Monte Carlo simulation paths.
   - Out-of-sample backtesting metrics.
-
+- **AI Summary**: Compares the strategies on out of sample metrics and provides insights using Google Gemini
 ---
 
 ## Tech Stack
