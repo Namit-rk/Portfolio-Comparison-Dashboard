@@ -10,7 +10,7 @@ from scr.config import STOCKS, START_DATE, END_DATE
 from scr.portfolio_making import load_returns, PortfoliosForTickers
 from scr.efficient_frontier import compute_frontier_data, plot_efficient_frontier
 
-
+from scr.gemini_prompt import gemini_output
 # ---------------------------------------------------------------------------
 # App Configeration
 # ---------------------------------------------------------------------------
@@ -205,7 +205,9 @@ control_bar = dbc.Card(
 
                             dbc.Col([
                                     html.Label("Date Range"),
-                                    dcc.DatePickerRange(id="date-range", start_date=START_DATE, end_date=END_DATE),
+                                    dcc.DatePickerRange(id="date-range", start_date=START_DATE, end_date=END_DATE,
+                                                        style={"color": "#1F51FF", "fontWeight": "600"}
+                                                        ),
                                     ], width=6),
 
                                 ], className="mb-3"),
@@ -214,15 +216,21 @@ control_bar = dbc.Card(
 
                         dbc.Row([
                                 dbc.Col([
-                                        dbc.Button("Add Portfolio", id="add-portfolio", color="primary"),
-                                        html.Div(id="weight-error", style={"color": "red"})
+                                        dbc.Button("➕ Add Portfolio", id="add-portfolio", color="primary",                                                 
+                                                   style={
+                                                        "background": "linear-gradient(135deg, #1F51FF, #00C6FF)",
+                                                        "border": "none",
+                                                        "fontWeight": "600",
+                                                        "padding": "10px 18px",
+                                                        "borderRadius": "8px",
+                                                        "boxShadow": "0 4px 12px rgba(31,81,255,0.4)",
+                                                        }),
+                                        html.Div(id="weight-error")
                                         ], width=2),
                                 ]),
                             ]),
                     style={"backgroundColor": "#000000", "marginBottom": "25px", "borderRadius": "12px", "border": "1px solid #1F51FF"},
                     )
-
-
 
 
 app.layout = dbc.Container(
@@ -295,13 +303,50 @@ app.layout = dbc.Container(
 
                             dbc.Col([
                                     html.Label("Date Range"),
-                                    dcc.DatePickerRange(id="backtest-date-range", start_date=START_DATE, end_date=END_DATE)
+                                    dcc.DatePickerRange(id="backtest-date-range", start_date=START_DATE, end_date=END_DATE,style={"color": "#1F51FF", "fontWeight": "600"})
                                     ], width=6),
 
                             graph_row(("Out-of-Sample Performance", "backtest-performance")),
 
-                            graph_row(("Out-of-Sample Risk", "backtest-risk"))
-                            
+                            graph_row(("Out-of-Sample Risk", "backtest-risk")),
+
+                            html.Button(
+                                        "Generate AI Portfolio Report",
+                                        id="generate-report",
+                                        n_clicks=0,
+                                        style={
+                                                "background": "linear-gradient(135deg, #1F51FF, #00C6FF)",
+                                                "color": "white",
+                                                "border": "none",
+                                                "padding": "12px 22px",
+                                                "fontSize": "16px",
+                                                "fontWeight": "600",
+                                                "borderRadius": "10px",
+                                                "cursor": "pointer",
+                                                "boxShadow": "0 4px 15px rgba(31, 81, 255, 0.4)",
+                                                "transition": "all 0.25s ease",
+                                                "marginBottom": "20px"
+                                                }
+                                        ),
+                                
+                                dcc.Store(id="backtest-data"),
+
+                                dcc.Loading(
+                                            id="loading-report",
+                                            type="circle",
+                                            children=dbc.Card(
+                                                            dbc.CardBody(
+                                                                dcc.Markdown(id="ai-report"),
+                                                                style={"padding": "20px"}   # space inside card
+                                                                ),
+                                                                style={
+                                                                    "backgroundColor": "#000000",
+                                                                    "border": "1px solid #1F51FF",
+                                                                    "marginBottom": "25px"
+                                                                }
+                                                            )
+                                        )
+                                                            
                             ],fluid=True,
                     )
 
@@ -720,6 +765,7 @@ def render_monte_carlo(selected_strategy:str,
 
 # Backtesting Graphs
 @app.callback(
+    Output("backtest-data", "data"),
     Output("backtest-performance", "figure"),
     Output("backtest-risk", "figure"),
     Input("ticker-dropdown", "value"),
@@ -748,9 +794,21 @@ def update_backtest(tickers:str,
                             y=1.15,
                             showarrow=False
                             )
-    return perf_fig, risk_fig
+    metrics_hmap = df.T.to_dict()
+    return metrics_hmap, perf_fig, risk_fig
 
-
+@app.callback(
+    Output("ai-report", "children"),
+    Input("generate-report", "n_clicks"),
+    State("backtest-data", "data")
+)
+def generate_report(n_clicks, data):
+    "Generates an AI summary, using Google Gemini AI and compares our strategies"
+    if n_clicks == 0 or data is None:
+        return ""
+    metrics = data
+    report = gemini_output(metrics)
+    return report
 
 # ---------------------------------------------------------------------------
 # Entry point
