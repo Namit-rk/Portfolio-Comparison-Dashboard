@@ -2,11 +2,19 @@
 
 A Python-based quantitative research dashboard for comparing multiple portfolio construction strategies on the same stock universe.
 
+<img width="1884" height="715" alt="{9D19662B-0A81-43B9-B6F0-19056AB8245A}" src="https://github.com/user-attachments/assets/0fee217b-8791-4b9a-b088-43f0497e924a" />
+
+
+<img width="1898" height="878" alt="{8217E5EC-AE49-4054-8A0B-A0897E79F28B}" src="https://github.com/user-attachments/assets/7af4c695-07b2-4fab-abb6-f3f050f51e98" />
+
+
 This project:
 - Downloads and updates historical market data.
 - Validates and cleans data into a modeling-ready return matrix.
 - Builds multiple portfolio strategies (equal weight, max Sharpe, minimum variance, risk parity, momentum, and optional user-defined portfolios).
 - Visualizes performance, risk, allocation, efficient frontier, Monte Carlo outcomes, and out-of-sample backtests in an interactive Dash app.
+
+**Live Demo:** https://portfolio-comparison-dashboard-2.onrender.com/
 
 ---
 
@@ -26,7 +34,7 @@ This project:
   - Monthly return heatmaps.
   - Monte Carlo simulation paths.
   - Out-of-sample backtesting metrics.
-
+- **AI Summary**: Compares the strategies on out of sample metrics and provides insights using Google Gemini
 ---
 
 ## Tech Stack
